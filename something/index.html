@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Customize Your Event Recommendations</h1>
+        <form action="/recommendations" method="POST">
+            <label for="event_type">Select Event Type:</label>
+            <select name="event_type" id="event_type">
+                <option value="">Any Type</option>
+                <option value="Conference">Conference</option>
+                <option value="Concert">Concert</option>
+                <!-- Add more event types as needed -->
+            </select>
+            
+            <label for="registration_required">Registration Required:</label>
+            <input type="checkbox" name="registration_required" id="registration_required" value="true"> Yes
+            
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Log</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Nutrition Log</h1>
+
+        <form action="{{ url_for('log_food') }}" method="POST">
+            <div class="form-group">
+                <label for="food">Food:</label>
+                <input type="text" class="form-control" id="food" name="food" required>
+            </div>
+            <div class="form-group">
+                <label for="portion">Portion Size:</label>
+                <input type="text" class="form-control" id="portion" name="portion" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Log Food Item</button>
+        </form>
+
+        <form action="{{ url_for('clear_log') }}" method="POST">
+            <button type="submit" class="btn btn-danger mt-3">Clear Log</button>
+        </form>
+
+        <h2 class="mt-4">Food Log Entries</h2>
+
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Protein (g)</th>
+                    <th>Fat (g)</th>
+                    <th>Carbohydrates (g)</th>
+                    <th>Calories</th>
+                    <th>Portion Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for food_entry in food_entries %}
+                    <tr>
+                        <td>{{ food_entry.name }}</td>
+                        <td>{{ food_entry.protein }}</td>
+                        <td>{{ food_entry.fat }}</td>
+                        <td>{{ food_entry.carbohydrates }}</td>
+                        <td>{{ food_entry.calories }}</td>
+                        <td>{{ food_entry.portion_sizes }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 class="mt-4">Burnt Calories</h2>
+        <p>Anisha's barre class: 561 calories</p>
+
+        <form action="{{ url_for('recommendations') }}" method="POST">
+            <button type="submit" class="btn btn-primary">Get Recommendations</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="btn btn-link">Go Back</a>
+    </div>
+</body>
+</html>
+
+
+
+
